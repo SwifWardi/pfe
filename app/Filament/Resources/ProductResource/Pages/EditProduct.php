@@ -52,7 +52,19 @@ class EditProduct extends EditRecord
             'slug' => Str::slug($this->record->name),
         ]);
 
-        // Handle photos
+        $photoPath = $this->data['photo'] ?? null;
+        $path = is_array($photoPath) ? reset($photoPath) : $photoPath;
+        log::info('data ' . $path);
+        if ($path && $this->photo !== $path) {
+            try {
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read(public_path('storage/' . $path));
+                $image->resize(180, 180);
+                $image->save();
+            } catch (\Exception $e) {
+                Log::error('Thumbnail processing failed: ' . $e->getMessage());
+            }
+        }  
         
         $photos = $this->data['photos'] ?? [];
         $this->record->photos()->delete();

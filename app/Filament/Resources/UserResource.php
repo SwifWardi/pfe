@@ -92,8 +92,7 @@ class UserResource extends Resource
                                 ->columnSpanFull(),
                 
                             TextInput::make('phone')
-                                ->tel()
-                                ->maxLength(20)
+                                ->maxLength(40)
                                 ->columnSpanFull(),
                         ])
                         ->columns(2),

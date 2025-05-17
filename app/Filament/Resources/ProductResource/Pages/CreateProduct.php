@@ -21,30 +21,20 @@ class CreateProduct extends CreateRecord
             'slug' => Str::slug($this->record->name),
         ]);
 
-         // Handle thumbnail - it's an associative array with UUID keys
-            $thumbnail = $this->data['thambnail'] ?? null;
-            
-            if ($thumbnail && is_array($thumbnail)) {
-                // Extract the first value from the thumbnail array
-                $thumbnailPath = reset($thumbnail); // Gets first value in the array
-                Log::info('Using thumbnail path: ' . $thumbnailPath);
-                
-                if (!empty($thumbnailPath)) {
-                    try {
-                        $manager = new ImageManager(new Driver());
-                        $image = $manager->read(public_path('storage/' . $thumbnailPath));
-                        $image->resize(800, 800);
-                        $image->save();
-                        
-                        // Update product with the thumbnail
-                        $this->record->update([
-                            'thambnail' => $thumbnailPath,
-                        ]);
-                    } catch (\Exception $e) {
-                        Log::error('Thumbnail processing failed: ' . $e->getMessage());
-                    }
-                }
+        $photoPath = $this->data['photo'] ?? null;
+        $path = is_array($photoPath) ? reset($photoPath) : $photoPath;
+        log::info('data ' . $path);
+        if ($path && $this->photo !== $path) {
+            try {
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read(public_path('storage/' . $path));
+                $image->resize(180, 180);
+                $image->save();
+            } catch (\Exception $e) {
+                Log::error('Thumbnail processing failed: ' . $e->getMessage());
             }
+        }    
+            
 
         $photos = $this->data['photos'] ?? [];
 

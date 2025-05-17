@@ -207,9 +207,10 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')->label('Product Name'),
+                TextColumn::make('vendor.name')->label('Vendor Name'),
                 TextColumn::make('qty'),
-                ImageColumn::make('thambnail'),
+                ImageColumn::make('thambnail')->label('Product Photo'),
             ])
             ->filters([
                 //
