@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::controller(HomeController::class)->group(function () {
 Route::get('/', 'index')->name('home'); 
 Route::get('/wishlist', 'wishlistPage')->name('wishlist.page'); 
+Route::get('/vendors', 'vendorList')->name('vendor.list'); 
 Route::get('/product/{id}', 'productPage')->name('product.page'); 
 });
 

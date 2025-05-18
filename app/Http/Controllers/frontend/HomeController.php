@@ -38,4 +38,8 @@ class HomeController extends Controller
     public function wishlistPage(){
         return view('home.wishlist');
     }
+
+    public function vendorList(){
+        return view('home.vendor.vendor-list');
+    }
 }

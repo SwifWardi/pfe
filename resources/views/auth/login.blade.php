@@ -4,7 +4,7 @@
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
+                    <a href={{route('home')}} rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
                     <span></span> Pages <span></span> My Account
                 </div>
             </div>

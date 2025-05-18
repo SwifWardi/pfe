@@ -13,17 +13,19 @@ class WishlistHeader extends Component
     public $countWishlist;
 
     public function mount(){
-        if(auth()->check()){
-            $wishlist = Wishlist::all();
-        }else {
-            $wishlist = session()->get('guest_wishlist', []);
-        }
-        $this->countWishlist = count($wishlist);
+        // if(auth()->check()){
+        //     $wishlist = Wishlist::where('user_id', auth()->id())->get();
+        // }else {
+        //     $wishlist = session()->get('guest_wishlist', []);
+        // }
+        // $this->countWishlist = count($wishlist);
+
+        $this->updateWishlist();
     }
 
     public function updateWishlist(){
         if(auth()->check()){
-            $wishlist = Wishlist::all();
+            $wishlist = Wishlist::where('user_id', auth()->id())->get();
         }else {
             $wishlist = session()->get('guest_wishlist', []);
         }

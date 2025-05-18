@@ -21,7 +21,7 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href={{route('wishlist.page')}}><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" onclick="quickView({{$product->id}})"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -69,7 +69,7 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href={{route('wishlist.page')}}><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" onclick="quickView({{$product->id}})"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -114,7 +114,7 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href={{route('wishlist.page')}}><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" onclick="quickView({{$product->id}})"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -159,7 +159,7 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href={{route('wishlist.page')}}><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" onclick="quickView({{$product->id}})"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -203,7 +203,7 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href={{route('wishlist.page')}}><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" onclick="quickView({{$product->id}})"><i class="fi-rs-eye"></i></a>
                                         </div>

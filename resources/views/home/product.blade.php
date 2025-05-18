@@ -6,7 +6,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
+                    <a href={{route('home')}} rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
                     <span></span> <a href="shop-grid-right.html">{{$product->category->name}}</a> 
                     <span></span> 
                     {{ implode(' ', array_slice(explode(' ', $product->name), 0, 4)) }}
@@ -376,7 +376,7 @@
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href={{route('wishlist.page')}} tabindex="0"><i class="fi-rs-heart"></i></a>
                                                     <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 <div class="product-badges product-badges-position product-badges-mrg">
@@ -406,7 +406,7 @@
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href={{route('wishlist.page')}} tabindex="0"><i class="fi-rs-heart"></i></a>
                                                     <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 <div class="product-badges product-badges-position product-badges-mrg">
@@ -436,7 +436,7 @@
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href={{route('wishlist.page')}} tabindex="0"><i class="fi-rs-heart"></i></a>
                                                     <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 <div class="product-badges product-badges-position product-badges-mrg">
@@ -466,7 +466,7 @@
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href={{route('wishlist.page')}} tabindex="0"><i class="fi-rs-heart"></i></a>
                                                     <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 <div class="product-badges product-badges-position product-badges-mrg">

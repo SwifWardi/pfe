@@ -13,7 +13,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
                             <ul>
                                 
                                 <li><a href="page-account.html">My Cart</a></li>
-                                <li><a href="shop-wishlist.html">Checkout</a></li>
+                                <li><a href={{route('wishlist.page')}}>Checkout</a></li>
                                 <li><a href="shop-order.html">Order Tracking</a></li>
                             </ul>
                         </div>
@@ -60,7 +60,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                        <a href={{route('home')}}><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                     </div>
                     <div class="header-right">
                         <div class="search-style-2">
@@ -124,7 +124,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
                                                 <a href="page-account.html"><i class="mr-10 fi fi-rs-label"></i>My Voucher</a>
                                             </li>
                                             <li>
-                                                <a href="shop-wishlist.html"><i class="mr-10 fi fi-rs-heart"></i>My Wishlist</a>
+                                                <a href={{route('wishlist.page')}}><i class="mr-10 fi fi-rs-heart"></i>My Wishlist</a>
                                             </li>
                                             <li>
                                                 <a href="page-account.html"><i class="mr-10 fi fi-rs-settings-sliders"></i>Setting</a>
@@ -166,7 +166,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                        <a href={{route('home')}}><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
@@ -222,7 +222,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
                                 <ul>
                                     
                                     <li>
-                                        <a class="active" href="index.html">Home  </a>
+                                        <a class="active" href={{route('home')}}>Home  </a>
                                         
                                     </li>
                                     <li>
@@ -246,7 +246,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
                                                 </ul>
                                             </li>
                                             <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                            <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
+                                            <li><a href={{route('wishlist.page')}}>Shop – Wishlist</a></li>
                                             <li><a href="shop-cart.html">Shop – Cart</a></li>
                                             <li><a href="shop-checkout.html">Shop – Checkout</a></li>
                                             <li><a href="shop-compare.html">Shop – Compare</a></li>
@@ -392,7 +392,7 @@ $categories = App\Models\Category::with(['product', 'subcategories'])->get();
                     <div class="header-action-right d-block d-lg-none">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
+                                <a href={{route('wishlist.page')}}>
                                     <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
                                     <span class="pro-count white">4</span>
                                 </a>
