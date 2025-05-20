@@ -42,4 +42,8 @@ class HomeController extends Controller
     public function vendorList(){
         return view('home.vendor.vendor-list');
     }
+
+    public function vendorDetails($id){
+        return view('home.vendor.vendor-details', ['id' => $id]);
+    }
 }
