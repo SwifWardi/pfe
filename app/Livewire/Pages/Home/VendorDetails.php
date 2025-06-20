@@ -2,122 +2,122 @@
 
 namespace App\Livewire\Pages\Home;
 
-use App\Models\Category;
-use App\Models\product;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 
 class VendorDetails extends Component
 {
-     use WithPagination;
-    
+    use WithPagination;
+
     public $id;
+    public $user;
+    public $sortBy = 'featured';
+    public $perPage = 2;
     public $selectedColors = [];
+    public $selectedConditions = [];
     public $minPrice = 0;
     public $maxPrice = 1000;
-    public $sortBy = 'featured';
-    public $perPage = 50;
-    public $condition = [];
-    
+    public $selectedCategory = null;
+
     public function mount($id)
     {
         $this->id = $id;
+        $this->user = User::findOrFail($id);
     }
-    
-    public function filter()
-    {
-        $this->resetPage();
+
+    public function filter(){
+         $this->resetPage();
     }
-    
-    public function updatingSelectedColors()
+
+    public function getProductsColorsProperty()
+{
+    return Product::where('vendor_id', $this->id)
+        ->whereNotNull('color')
+        ->pluck('color') // Get all color strings like 'red,blue'
+        ->flatMap(function ($item) {
+            return explode(',', $item); // Split by comma
+        })
+        ->map(fn($color) => trim(strtolower($color))) // Clean up
+        ->filter()
+        ->unique()
+        ->values(); // Reset keys
+}
+
+    public function getProductsProperty()
     {
-        $this->resetPage();
-    }
-    
-    public function updatingMinPrice()
-    {
-        $this->resetPage();
-    }
-    
-    public function updatingMaxPrice()
-    {
-        $this->resetPage();
-    }
-    
-    public function updatingSortBy()
-    {
-        $this->resetPage();
-    }
-    
-    public function updatingPerPage()
-    {
-        $this->resetPage();
-    }
-    
-    public function updatingCondition()
-    {
-        $this->resetPage();
-    }
-    
-    public function render()
-    {
-        $query = Product::where('vendor_id', $this->id);
-        
-        // Apply color filter
+        $query = Product::where('vendor_id', $this->id)
+            ->where('status', 1)
+            ->with(['category', 'vendor']);
+
+        // Apply category filter
+        if ($this->selectedCategory) {
+            $query->where('category_id', $this->selectedCategory);
+        }
+
+        // Apply color filter (assuming you have a colors column or relationship)
         if (!empty($this->selectedColors)) {
-            $query->whereIn('color', $this->selectedColors);
+            $query->where(function ($q) {
+                foreach ($this->selectedColors as $color) {
+                    $q->orWhere('color', 'LIKE', '%' . $color . '%');
+                }
+});
+
         }
-        
+
         // Apply price filter
-        if ($this->minPrice > 0 || $this->maxPrice < 1000) {
-            $query->where(function($q) {
-                $q->where(function($subq) {
-                    $subq->whereNotNull('discount_price')
-                         ->where('discount_price', '>=', $this->minPrice)
-                         ->where('discount_price', '<=', $this->maxPrice);
-                })->orWhere(function($subq) {
-                    $subq->whereNull('discount_price')
-                         ->where('selling_price', '>=', $this->minPrice)
-                         ->where('selling_price', '<=', $this->maxPrice);
-                });
-            });
-        }
-        
-        // Apply condition filter
-        if (!empty($this->condition)) {
-            $query->whereIn('condition', $this->condition);
-        }
-        
+        $query->where(function($q) {
+            $q->whereBetween('selling_price', [$this->minPrice, $this->maxPrice])
+              ->orWhereBetween('discount_price', [$this->minPrice, $this->maxPrice]);
+        });
+
         // Apply sorting
         switch ($this->sortBy) {
-            case 'price_low_to_high':
+            case 'price_low_high':
                 $query->orderByRaw('COALESCE(discount_price, selling_price) ASC');
                 break;
-            case 'price_high_to_low':
+            case 'price_high_low':
                 $query->orderByRaw('COALESCE(discount_price, selling_price) DESC');
                 break;
             case 'release_date':
-                $query->orderBy('created_at', 'DESC');
+                $query->orderBy('created_at', 'desc');
                 break;
-            case 'avg_rating':
-                $query->orderBy('rating', 'DESC');
+            case 'rating':
+                $query->orderBy('rating', 'desc');
                 break;
+            case 'featured':
             default:
-                $query->orderBy('created_at', 'DESC'); // Default to newest
+                $query->orderBy('featured', 'desc')->orderBy('created_at', 'desc');
                 break;
         }
-        
-        $products = $query->paginate($this->perPage);
-        $vendor = User::find($this->id);
-        $categories = Category::withCount(['product' => function($query) {
-            $query->where('vendor_id', $this->id);
-        }])->get();
-        
-        return view('livewire.vendor-products-component', [
-            'products' => $products,
-            'user' => $vendor,
-            'categories' => $categories,
+
+        if ($this->perPage === 'all') {
+            return $query->get();
+        }
+
+        return $query->paginate($this->perPage);
+    }
+
+    public function getCategoriesProperty()
+    {
+        return Category::whereHas('product', function ($query) {
+            $query->where('vendor_id', $this->id)->where('status', 1);
+        })
+        ->withCount(['product as products_count' => function ($query) {
+            $query->where('vendor_id', $this->id)->where('status', 1);
+        }])
+        ->get();
+    }
+
+    public function render()
+    {
+        return view('livewire.pages.home.vendor-details', [
+            'products' => $this->products,
+            'categories' => $this->categories,
+            'user' => $this->user
         ]);
     }
 }

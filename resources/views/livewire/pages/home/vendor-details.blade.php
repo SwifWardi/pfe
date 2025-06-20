@@ -30,11 +30,11 @@
                                     </div>
                                     <div class="sort-by-dropdown">
                                         <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
+                                            <li><a class="active" wire:click.prevent="$set('perPage', 50)">50</a></li>
+                                            <li><a wire:click.prevent="$set('perPage', 100)">100</a></li>
+                                            <li><a wire:click.prevent="$set('perPage', 150)">150</a></li>
+                                            <li><a wire:click.prevent="$set('perPage', 200)">200</a></li>
+                                            <li><a wire:click.prevent="$set('perPage', 'all')">All</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -49,11 +49,10 @@
                                     </div>
                                     <div class="sort-by-dropdown">
                                         <ul>
-                                            <li><a class="active" href="#">Featured</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                            <li><a href="#">Release Date</a></li>
-                                            <li><a href="#">Avg. Rating</a></li>
+                                           <li><a wire:click.prevent="$set('sortBy', 'featured')">Featured</a></li>
+                                            <li><a wire:click.prevent="$set('sortBy', 'price_low_high')">Price: Low to High</a></li>
+                                            <li><a wire:click.prevent="$set('sortBy', 'price_high_low')">Price: High to Low</a></li>
+                                            <li><a wire:click.prevent="$set('sortBy', 'newest')">Newest</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -61,7 +60,7 @@
                         </div>
                         <div class="row product-grid">
                             @foreach ($products as $product)
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6" wire:key="product-{{ $product->id }}">
                                 <div class="product-cart-wrap">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
@@ -79,7 +78,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.html">{{$product->category->name}}</a>
                                         </div>
-                                        <h2><a href="shop-product-right.html">{{$product->name}}</a></h2>
+                                        <h2><a class="truncate-2-lines" href="shop-product-right.html">{{$product->name}}</a></h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
@@ -112,17 +111,19 @@
 
                         </div>
                         <!--product grid-->
+                        @if(method_exists($products, 'links'))    
                         <div class="mt-20 mb-20 pagination-area">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                {{$products->links('vendor.livewire.simple-bootstrap')}}
+                                {{$products->links('vendor.livewire.vendor-links')}}
                                 </ul>
                             </nav>
                         </div>
+                        @endif
                     
                         <!--End Deals-->
                     </div>
-                    <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
+                    <div wire:ignore class="col-lg-1-5 primary-sidebar sticky-sidebar">
                         <div class="border-0 sidebar-widget widget-store-info mb-30 bg-3">
                             <div class="vendor-logo mb-30">
                                 <img src="assets/imgs/vendor/vendor-16.png" alt="" />
@@ -175,24 +176,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar-widget widget-category-2 mb-30">
+                        <div wire:ignore class="sidebar-widget widget-category-2 mb-30">
                             <h5 class="section-title style-1 mb-30">Category</h5>
                             <ul>
+                                @foreach ($categories as $category)    
                                 <li>
-                                    <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
+                                    <a wire:click.prevent="$set('selectedCategory', {{$category->id}})" > <img src="{{asset('storage/' . $category->image)}}" alt="" />{{$category->name}}</a><span class="count-cat" >{{$category->products_count}}</span>
                                 </li>
-                                <li>
-                                    <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-2.svg" alt="" />Clothing</a><span class="count">35</span>
-                                </li>
-                                <li>
-                                    <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a><span class="count">42</span>
-                                </li>
-                                <li>
-                                    <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a><span class="count">68</span>
-                                </li>
-                                <li>
-                                    <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
-                                </li>
+                                @endforeach
+
                             </ul>
                         </div>
                         <!-- Fillter By Price -->
@@ -211,7 +203,12 @@
                                 <div class="mt-10 mb-10 list-group-item">
                                     <label class="fw-900">Color</label>
                         <div class="custome-checkbox">
-                            <input class="form-check-input" type="checkbox" wire:model="selectedColors" value="Red" id="colorRed" />
+                              @foreach ($this->productsColors as $color)    
+                            <input class="form-check-input" type="checkbox" wire:model="selectedColors" value="{{$color}}" id="color{{$color}}" />
+                            <label class="form-check-label" for="color{{$color}}"><span>{{$color}}</span></label>
+                            <br />
+                            @endforeach
+                            <!-- <input class="form-check-input" type="checkbox" wire:model="selectedColors" value="Red" id="colorRed" />
                             <label class="form-check-label" for="colorRed"><span>Red (56)</span></label>
                             <br />
 
@@ -220,19 +217,10 @@
                             <br />
 
                             <input class="form-check-input" type="checkbox" wire:model="selectedColors" value="Blue" id="colorBlue" />
-                            <label class="form-check-label" for="colorBlue"><span>Blue (54)</span></label>
+                            <label class="form-check-label" for="colorBlue"><span>Blue (54)</span></label> -->
                         </div>
-                                    <label class="fw-900 mt-15">Item Condition</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="" />
-                                        <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                                        <br />
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="" />
-                                        <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
-                                        <br />
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="" />
-                                        <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                    </div>
+                                    
+                        
                                 </div>
                             </div>
                             <a href="javascript:void(0)" wire:click="filter" class="btn btn-sm btn-default"><i class="mr-5 fi-rs-filter"></i> Fillter</a>

@@ -52,7 +52,7 @@
             prefix: "$"
         });
         noUiSlider.create(rangeSlider, {
-            start: [500, 1000],
+            start: [0, 1000],
             step: 1,
             range: {
                 min: [0],

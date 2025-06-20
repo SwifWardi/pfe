@@ -4614,7 +4614,7 @@ table .product-thumbnail img {
   top: 1px;
 }
 
-.range .check-box-list .count {
+.range .check-box-list .count, .count-cat {
   margin-left: 5px;
   color: #666;
 }
@@ -9400,7 +9400,7 @@ span.fi-rs-apps {
   margin-right: 0;
 }
 
-.widget-category-2 .count {
+.widget-category-2 .count, .count-cat {
   display: inline-block;
   background-color: #BCE3C9;
   width: 24px;
