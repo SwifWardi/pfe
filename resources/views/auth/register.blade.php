@@ -1,8 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-@include('main-parts.preview')
-@include('main-parts.header')
 <main class="main pages">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -22,7 +19,7 @@
                                     <div class="bg-white padding_eight_all">
                                         <div class="heading_s1">
                                             <h1 class="mb-5">Create an Account</h1>
-                                            <p class="mb-30">Already have an account? <a href="page-login.html">Login</a></p>
+                                            <p class="mb-30">Already have an account? <a href="/login">Login</a></p>
                                         </div>
                                         <form method="post" action="{{ route('register') }}">
                                             @csrf
@@ -73,15 +70,6 @@
             </div>
         </div>
     </main>
-@include('main-parts.footer')
-<div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="text-center">
-                    <img src="{{asset('frontend/assets/imgs/theme/loading.gif')}}" alt="" />
-                </div>
-            </div>
-        </div>
-    </div>
+
 @endsection
 

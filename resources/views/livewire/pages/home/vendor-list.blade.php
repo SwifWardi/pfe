@@ -2,7 +2,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
+                    <a href="/" rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
                     <span></span> Vendors List
                 </div>
             </div>
@@ -11,18 +11,7 @@
             <div class="container">
                 <div class="text-center archive-header-2">
                     <h1 class="display-2 mb-50">Vendors List</h1>
-                    <div class="row">
-                        <div class="mx-auto col-lg-5">
-                            <div class="sidebar-widget-2 widget_search mb-50">
-                                <div class="search-form" >
-                                    <form wire:submit.prevent="search" >
-                                        <input type="text" wire:model="query" placeholder="Search vendors (by name or ID)..." />
-                                        <button wire:click="search" type="submit"><i class="fi-rs-search"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row mb-50">
                     <div class="mx-auto col-12 col-lg-8">
@@ -37,7 +26,7 @@
                                             <span><i class="fi-rs-apps"></i>Show:</span>
                                         </div>
                                         <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                            <span> 2 <i class="fi-rs-angle-small-down"></i></span>
                                         </div>
                                     </div>
                                    <div class="sort-by-dropdown">

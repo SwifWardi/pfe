@@ -2,14 +2,14 @@
             <div class="page-header breadcrumb-wrap">
                 <div class="container">
                     <div class="breadcrumb">
-                        <a href="index.html" rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
-                        <span></span> Store <span></span> Nest Food
+                        <a href="/" rel="nofollow"><i class="mr-5 fi-rs-home"></i>Home</a>
+                        <span></span> Store <span></span> SoButik Food
                     </div>
                 </div>
             </div>
             <div class="container mb-30">
                 <div class="text-center archive-header-2 pt-80 pb-50">
-                    <h1 class="display-2 mb-50">Nest Food Store</h1>
+                    <h1 class="display-2 mb-50">SoButik Food Store</h1>
                     
                 </div>
                 <div class="flex-row-reverse row">
@@ -64,21 +64,17 @@
                                 <div class="product-cart-wrap">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="{{route('product.page', ['id' => $product->id])}}">
                                                 <img class="default-img" src="{{asset('storage/' . $product->thambnail)}}" alt="" />
                                             </a>
                                         </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
+                                        
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
                                             <a href="shop-grid-right.html">{{$product->category->name}}</a>
                                         </div>
-                                        <h2><a class="truncate-2-lines" href="shop-product-right.html">{{$product->name}}</a></h2>
+                                        <h2><a class="truncate-2-lines" href="{{route('product.page', ['id' => $product->id])}}">{{$product->name}}</a></h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
@@ -86,7 +82,7 @@
                                             <span class="ml-5 font-small text-muted"> (2.0)</span>
                                         </div>
                                         <div>
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">{{$product->vendor->name}}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{route('vendor.details', ['id' => $product->vendor_id])}}">{{$product->vendor->name}}</a></span>
                                         </div>
                                         <div class="product-card-bottom">
                                             @if ($product->discount_price)     
@@ -100,7 +96,7 @@
                                             </div>
                                             @endif
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>

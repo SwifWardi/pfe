@@ -15,9 +15,11 @@ class Cart extends Model
         'photo',
     ];
 
-    public function product(){
-        $this->belongsTo(product::class);
-    }
+    public function product()
+{
+    return $this->belongsTo(Product::class, 'product_id');
+}
+
 
     public function user(){
         $this->belongsTo(User::class);

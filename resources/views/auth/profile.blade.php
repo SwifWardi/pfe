@@ -35,9 +35,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="mr-10 fi-rs-user"></i>Account details</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="page-login.html"><i class="mr-10 fi-rs-sign-out"></i>Logout</a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -166,7 +164,7 @@
                                                 <h5>Account Details</h5>
                                             </div>
                                             <div class="card-body">
-                                                <p>Already have an account? <a href="page-login.html">Log in instead!</a></p>
+                                                <p>Already have an account? <a href="/login">Log in instead!</a></p>
                                                 <form method="post" name="enq">
                                                     <div class="row">
                                                         <div class="form-group col-md-12">

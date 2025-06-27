@@ -66,7 +66,7 @@
                                             </div>
                                             @endif
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
                                             </div>
                                             @endif
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>

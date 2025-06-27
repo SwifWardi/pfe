@@ -41,7 +41,7 @@
                                             <span class="ml-5 font-small text-muted"> (4.0)</span>
                                         </div>
                                         <div>
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">NestFood</a></span>
+                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">SoButikFood</a></span>
                                         </div>
                                         <div class="product-card-bottom">
                                             <div class="product-price">
@@ -49,7 +49,7 @@
                                                 <span class="old-price">$32.8</span>
                                             </div>
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
                                                 <span class="old-price">$55.8</span>
                                             </div>
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                                 <span class="old-price">$52.8</span>
                                             </div>
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
                                             <span class="ml-5 font-small text-muted"> (4.0)</span>
                                         </div>
                                         <div>
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">NestFood</a></span>
+                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">SoButikFood</a></span>
                                         </div>
                                         <div class="product-card-bottom">
                                             <div class="product-price">
@@ -184,7 +184,7 @@
                                                 <span class="old-price">$19.8</span>
                                             </div>
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>
@@ -223,7 +223,7 @@
                                             <span class="ml-5 font-small text-muted"> (4.0)</span>
                                         </div>
                                         <div>
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">NestFood</a></span>
+                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">SoButikFood</a></span>
                                         </div>
                                         <div class="product-card-bottom">
                                             <div class="product-price">
@@ -231,7 +231,7 @@
                                                 <span class="old-price">$25.8</span>
                                             </div>
                                             <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
+                                                <a class="add" href="{{route('cart.page')}}"><i class="mr-5 fi-rs-shopping-cart"></i>Add </a>
                                             </div>
                                         </div>
                                     </div>
